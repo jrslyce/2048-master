@@ -129,11 +129,13 @@
 {
   [self hideOverlay];
   [self updateScore:0];
-// Jared Thought it would spawn webview
-  [ myWebView];
   [_scene startNewGame];
+    
 }
 
+- (IBAction)restartWithDemo:(id)sender {
+    [self endGame:NO];
+}
 
 - (IBAction)keepPlaying:(id)sender
 {
@@ -176,7 +178,7 @@
   NSInteger side = GSTATE.dimension * (GSTATE.tileSize + GSTATE.borderWidth) + GSTATE.borderWidth;
   _overlay.center = CGPointMake(GSTATE.horizontalOffset + side / 2, verticalOffset - side / 2);
   
-  [UIView animateWithDuration:0.5 delay:1.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+  [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
     _overlay.alpha = 1;
     _overlayBackground.alpha = 1;
   } completion:^(BOOL finished) {
